@@ -1,15 +1,21 @@
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
-      - 'main'
-      - 'features/**'
-
+      - main      
   workflow_dispatch:
     inputs:
       environment:
         description: 'Environment to run tests against'
         type: environment
         required: true
+permissions:
+  id-token: write
+  contents: read
+
+
 
 jobs:
   print-tag:
