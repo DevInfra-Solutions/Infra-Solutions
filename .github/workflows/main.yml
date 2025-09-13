@@ -3,4 +3,18 @@ on:
     branches:
       - 'main'
       - 'features/**'
+
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true
+
+jobs:
+  print-tag:
+    runs-on: Github-workflow-runner
+    if: ${{ inputs.print_tags }} 
+    steps:
+      - name: Print the input tag to STDOUT
+        run: echo  The tags are ${{ inputs.tags }} 
