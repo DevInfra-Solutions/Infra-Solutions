@@ -1,3 +1,4 @@
+name: Infra-provisioning
 on:
   pull_request:
     branches:
@@ -14,13 +15,10 @@ on:
 permissions:
   id-token: write
   contents: read
-
-
-
 jobs:
-  print-tag:
+  terraform-job:
     runs-on: Github-workflow-runner
-    if: ${{ inputs.print_tags }} 
     steps:
-      - name: Print the input tag to STDOUT
-        run: echo  The tags are ${{ inputs.tags }} 
+    - name: Checkout
+      uses: actions/checkout@v5.0.0
+  
